@@ -1,12 +1,58 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+
     <meta charset="UTF-8">
+
     <title>Title</title>
+
+    <link type="text/css"
+    rel="stylesheet"
+    href="${pageContext.request.contextPath}/resources/css/style.css}"/>
+
 </head>
+
 <body>
-<div th:each="customer : ${customers}">
-    <a th:text="${customer.getFirstName()}">customer</a>
+
+<div id="wrapper">
+
+    <div id="header">
+
+        <h2>Users</h2>
+
+    </div>
+
 </div>
+
+<div id="container">
+
+    <div id="content">
+        <input type="button" value="Add User"
+        onclick="window.location.href='new'; return false;"
+        class="add-button"
+        />
+        <table>
+
+            <tr>
+
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+
+            </tr>
+
+        </table>
+
+    </div>
+
+</div>
+<div th:each="user: ${users}">
+
+    <a th:href="@{/user/{id} (id=${user.getId()})}" th:text="${user.getFirstName()}">user</a>
+    <a th:text="${user.getLastName()}">user</a>
+    <a th:text="${user.getEmail()}">user</a>
+
+</div>
+
 </body>
 </html>
