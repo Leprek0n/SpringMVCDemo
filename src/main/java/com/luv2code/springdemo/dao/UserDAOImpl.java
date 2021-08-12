@@ -22,7 +22,7 @@ public class UserDAOImpl implements UserDAO {
         return resultList;
     }
 
-    @Transactional
+
     @Override
     public void save(User user) {
         User user1 = entityManager.merge(user);
@@ -35,18 +35,16 @@ public class UserDAOImpl implements UserDAO {
     }
 
     @Override
-    @Transactional
     public void update(User user, int id) {
         User user1 = entityManager.find(User.class, id);
         user1.setFirstName(user.getFirstName());
         user1.setLastName(user.getLastName());
         user1.setEmail(user.getEmail());
-        entityManager.persist(user1);
+        entityManager.merge(user1);
     }
 
     @Override
-    @Transactional
-    public void delete(User user, int id) {
+    public void delete( int id) {
         User user1 = entityManager.find(User.class, id);
         entityManager.remove(user1);
     }

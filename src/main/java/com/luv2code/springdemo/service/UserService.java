@@ -9,5 +9,5 @@ public interface UserService {
     public void save(User user);
     public User showById(int id);
     public void update(User user, int id);
-    public void delete(User user, int id);
+    public void delete( int id);
 }
