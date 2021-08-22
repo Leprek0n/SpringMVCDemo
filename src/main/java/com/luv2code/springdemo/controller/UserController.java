@@ -19,11 +19,11 @@ public class UserController {
     }
     @GetMapping("/new")
     public String newCustomer(Model model) {
-        model.addAttribute("user", new com.luv2code.springdemo.entity.User());
+        model.addAttribute("user", new User());
         return "create";
     }
     @PostMapping()
-    public String saveCustomer(@ModelAttribute("user") com.luv2code.springdemo.entity.User user) {
+    public String saveCustomer(@ModelAttribute("user") User user) {
         userService.save(user);
         return "redirect:/user/list";
     }
